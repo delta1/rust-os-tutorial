@@ -4,14 +4,23 @@
 #![no_std]
 #![reexport_test_harness_main = "test_main"]
 #![test_runner(crate::test_runner)]
+#![feature(alloc_error_handler)] // at the top of the file
 
 use core::panic::PanicInfo;
 
+extern crate alloc;
+
+pub mod allocator;
 pub mod gdt;
 pub mod interrupts;
 pub mod memory;
 pub mod serial;
 pub mod vga_buffer;
+
+#[alloc_error_handler]
+fn alloc_error_handler(layout: alloc::alloc::Layout) -> ! {
+    panic!("allocation error: {:?}", layout)
+}
 
 pub fn init() {
     gdt::init();
