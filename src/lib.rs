@@ -4,6 +4,7 @@
 #![feature(const_in_array_repeat_expressions)]
 #![feature(const_mut_refs)]
 #![feature(custom_test_frameworks)]
+#![feature(wake_trait)]
 #![no_std]
 #![reexport_test_harness_main = "test_main"]
 #![test_runner(crate::test_runner)]
@@ -17,6 +18,7 @@ pub mod gdt;
 pub mod interrupts;
 pub mod memory;
 pub mod serial;
+pub mod task;
 pub mod vga_buffer;
 
 #[alloc_error_handler]
