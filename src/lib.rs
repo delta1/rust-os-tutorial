@@ -1,10 +1,12 @@
 #![cfg_attr(test, no_main)]
 #![feature(abi_x86_interrupt)]
+#![feature(alloc_error_handler)]
+#![feature(const_in_array_repeat_expressions)]
+#![feature(const_mut_refs)]
 #![feature(custom_test_frameworks)]
 #![no_std]
 #![reexport_test_harness_main = "test_main"]
 #![test_runner(crate::test_runner)]
-#![feature(alloc_error_handler)] // at the top of the file
 
 use core::panic::PanicInfo;
 
